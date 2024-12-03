@@ -1,21 +1,27 @@
 import { FC } from "react";
-import { HeaderGrid, TitleTypography } from "./styles";
-import LotrLogo from "../../../../public/lotr-logo.svg";
-import { Grid2 } from "@mui/material";
+import { HeaderGrid, HeaderTitleGrid, TitleTypography } from "./styles";
+import LotrLogo from "@/public/lotr-logo.svg";
 
 const Logo = () => {
-    return (<img src={LotrLogo.src} style={{ position: 'absolute', width: '250px' }}/>)
+  // eslint-disable-next-line @next/next/no-img-element
+  return (<img src={LotrLogo.src} style={{ position: 'absolute', width: '250px' }} alt="lord of the rings logo" />)
 }
 
-const Footer: FC = () => {
-    return <HeaderGrid>
-        <Logo />
-        <Grid2 sx={{ justifyContent: 'center', width: '100%'}}>
-            <TitleTypography variant="h6">
-                Visualization
-            </TitleTypography>
-        </Grid2>
+interface Props {
+  headerName: string
+}
+
+const Header: FC<Props> = ({ headerName }) => {
+  return (
+    <HeaderGrid>
+      <Logo />
+      <HeaderTitleGrid>
+        <TitleTypography variant="h6">
+          {headerName}
+        </TitleTypography>
+      </HeaderTitleGrid>
     </HeaderGrid>
+  )
 }
 
-export default Footer
+export default Header
